@@ -14,7 +14,7 @@
 <script setup lang="ts">
 import {ref, onMounted} from "vue";
 import Element from "@/components/Element.vue";
-import api from "@/api"
+import api from "@/api/api";
 import axios from "axios";
 
 
@@ -24,7 +24,7 @@ interface Element {
 }
 
 const elements = ref<Element[]>([])
-const url = import.meta.env.VITE_APP_API_URL
+const url = "https://drab-plum-dalmatian-gear.cyclic.app/" /*import.meta.env.VITE_APP_API_URL*/
 
 const add = () => {
   const text = `Element ${elements.value.length + 1}`
@@ -35,8 +35,6 @@ const add = () => {
           text: response.data.text,
           _id: response.data._id,
         })
-
-        console.log(response.data)
       })
       .catch(error => {
         console.log(error)
