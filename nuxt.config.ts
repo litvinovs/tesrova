@@ -3,6 +3,6 @@ export default defineNuxtConfig({
   devtools: { enabled: true },
 
   nitro: {
-    plugins: ["~/server/models/listModel.js"],
+    plugins: ["~/server/utils/database.js"],
   }
 })

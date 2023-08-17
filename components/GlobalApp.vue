@@ -38,13 +38,15 @@ const add = async () => {
   })
 
   if (response) {
+
     console.log(response)
+
     // Получаем данные из ответа
     const data = await response
     // Добавляем новый элемент в массив
     elements.value.push({
       text: data.text,
-      _id: data._id,
+      _id: data.id,
     })
   } else {
     // Обрабатываем ошибку
@@ -55,24 +57,28 @@ const add = async () => {
 
 // Удаляем элемент из списка с помощью метода DELETE
 const remove = async (params: { id: number }) => {
+  console.log(params)
+
   const id = params.id
   // Фильтруем массив, убирая элемент с заданным id
   elements.value = elements.value.filter(element => element._id !== id)
   // Используем $fetch для удаления данных с сервера
   await $fetch('/api/list', {
     method: 'DELETE',
-    body: { id: id }
+    body: {id: id}
   })
 }
 
 // Изменяем элемент в списке с помощью метода PUT
 const modify = async (params: { id: number, value: string }) => {
+
   const {id, value} = params
+
   // Выводим id и value в консоль
-  console.log(id, value)
+  console.log(elements.value)
   // Обновляем массив, заменяя текст элемента с заданным id
   elements.value = elements.value.map(element => {
-    if (element._id === id) {
+    if (element._id == id) {
       element.text = value
     }
     return element
@@ -88,23 +94,24 @@ const modify = async (params: { id: number, value: string }) => {
 }
 
 onMounted(async () => {
-  // Импортируем useFetch из Nuxt Composables
-  import { useFetch } from '#app'
-
-  // Используем useFetch для запроса данных с сервера или клиента
-  const { data: elements, error, pending, refresh } = await useFetch('/api/list', {
+  // Используем $fetch для запроса данных
+  const response = await $fetch('/api/list', {
     method: 'GET',
-    body: upload
   })
 
+  console.log(response)
+
+
   // Проверяем, что ответ успешный
-  if (error) {
-    // Обрабатываем ошибку
-    console.log(error)
-  } else {
+  if (response) {
+    // Получаем данные из ответа
+    const data = await response.elements
     // Преобразуем массив элементов в нужный формат
-    elements.value = elements.value.map((element: { _id: string, text: string }) =>
+    elements.value = data.map((element: { _id: string, text: string }) =>
         ({_id: element._id, text: element.text}))
+  } else {
+    // Обрабатываем ошибку
+    console.log("fdfd")
   }
 })
 
