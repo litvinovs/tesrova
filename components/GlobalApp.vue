@@ -111,7 +111,7 @@ onMounted(async () => {
         ({_id: element._id, text: element.text}))
   } else {
     // Обрабатываем ошибку
-    console.log("fdfd")
+    console.log("Что то с ответом от сервера")
   }
 })
 

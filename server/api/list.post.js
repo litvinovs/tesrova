@@ -1,6 +1,6 @@
 
 // server/api/list.post.js
-import List  from '../models/listModel'
+import List  from '~/server/dbModels/listModel'
 
 export default defineEventHandler(async (event) => {
 	const body = await readBody(event)
