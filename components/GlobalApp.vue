@@ -14,7 +14,7 @@
 <script setup lang="ts">
 import {ref, onMounted} from "vue";
 import Element from "@/components/Element.vue";
-import api from "@/api/api";
+import api from "@/api/api.ts";
 import axios from "axios";
 
 
@@ -32,17 +32,14 @@ const url = "http://localhost:3000/" /*import.meta.env.VITE_APP_API_URL*/
 const add = async () => {
   const text = `Element ${elements.value.length + 1}`
 
-  const response = await $fetch('/api/list', {
-    method: 'POST',
-    body: {text: text}
-  })
+  const response = await api.post('/api/list', {text: text})
 
   if (response) {
 
-    console.log(response)
+    console.log(response.data)
 
     // Получаем данные из ответа
-    const data = await response
+    const data = await response.data
     // Добавляем новый элемент в массив
     elements.value.push({
       text: data.text,
