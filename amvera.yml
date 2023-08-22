@@ -1,0 +1,8 @@
+version: 1
+name: nuxt-app
+runtime: nodejs
+build:
+  command: npm run build
+deploy:
+  command: npm start
+  port: 3000
