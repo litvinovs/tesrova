@@ -1,8 +1,12 @@
-version: 1
-name: nuxt-app
-runtime: nodejs
+meta:
+  environment: node
+  toolchain:
+    name: npm
+    version: 18
 build:
+  artifacts:
+    '*': /
   command: npm run build
-deploy:
-  command: npm start
-  port: 80
+run:
+  persistenceMount: /data
+  containerPort: 80
