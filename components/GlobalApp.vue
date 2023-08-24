@@ -24,7 +24,7 @@ interface Element {
 }
 
 const elements = ref<Element[]>([])
-const url = "http://185.68.22.242/:3001/" /*import.meta.env.VITE_APP_API_URL*/
+const url = "http://localhost:3000/" /*import.meta.env.VITE_APP_API_URL*/
 
 const add = async () => {
   const text = `Element ${elements.value.length + 1}`
