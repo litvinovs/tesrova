@@ -13,8 +13,8 @@
 
 <script setup lang="ts">
 import {ref, onMounted} from "vue";
-import Element from "@/components/Element.vue";
-import api from "@/api/api.ts";
+import Element from "~/frontend/components/Element.vue";
+import api from "~/frontend/api/api.ts";
 import axios from "axios";
 
 
