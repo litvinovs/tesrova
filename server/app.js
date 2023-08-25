@@ -58,11 +58,7 @@ app.post("/list", function (req, res) {
 		})
 });
 
-app.post("/telegram_update_12345", async function (req, res) {
-	
-	
-	
-	
+app.post("/telegram", async function (req, res) {
 	let chatId;
 	let text;
 	

@@ -4,7 +4,7 @@ const TOKEN = '6519194051:AAG2kj0L7zwYCl0K3eyfQT2DCtMkoH7Nk6Y';
 
 const bot = new TelegramBot(TOKEN, {polling: false}); // Отключаем polling
 
-const WEBHOOK_URL = 'https://functions.yandexcloud.net/d4emu8jfdfv14p03e95p/telegram';
+const WEBHOOK_URL = 'http://1889059-ps47079.twc1.net/telegram';
 
 bot.setWebHook(WEBHOOK_URL);
 
