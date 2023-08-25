@@ -13,7 +13,7 @@ const cookieParser = require('cookie-parser');
 
 
 
-const url = process.env.MONGO_DB_URL
+const url = "mongodb://gen_user:6,m|^VIihN7OA)@77.232.129.4:27017/default_db?authSource=admin&directConnection=true"
 
 
 const connectDB = async () => {
